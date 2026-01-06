@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigeração Kirchner - Catálogo Digital</title>
+    
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2324/2324147.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container top-nav">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span class="material-icons" style="font-size: 28px;">menu</span>
+                </button>
+                <div class="logo" onclick="navigateTo('home')">Refrigeração <span>Kirchner</span></div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="O que você procura?">
+                <button onclick="buscarProdutos()"><span class="material-icons">search</span></button>
+            </div>
+
+            <div class="actions-nav">
+                <div class="icon-btn" onclick="navigateTo('favorites')">
+                    <span class="material-icons">favorite</span>
+                    <span>Favoritos</span>
+                </div>
+                <div class="icon-btn" onclick="navigateTo('register')">
+                    <span class="material-icons">person</span>
+                    <span>Conta</span>
+                </div>
+                <div class="icon-btn" onclick="toggleCart()">
+                    <span class="material-icons">shopping_cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                    <span>Orçamento</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+<aside class="sidebar" id="sidebarMenu">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div class="logo" style="font-size: 18px; color: #333;">Menu</div>
+        <button onclick="toggleMenu()" style="background:none; border:none; font-size: 24px; cursor: pointer;">&times;</button>
+    </div>
+
+    <h3>Categorias</h3>
+    <ul>
+        <li><a href="#" onclick="filtrarCategoria('Compressores'); toggleMenu()"><span class="material-icons">ac_unit</span> Compressores</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Gases'); toggleMenu()"><span class="material-icons">air</span> Gases Refrigerantes</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Ferramentas'); toggleMenu()"><span class="material-icons">build</span> Ferramentas</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Elétrica'); toggleMenu()"><span class="material-icons">bolt</span> Elétrica</a></li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h3>Institucional</h3>
+    <ul>
+        <li><a href="#"><span class="material-icons">person</span> Minha Conta</a></li>
+        <li><a href="#"><span class="material-icons">local_shipping</span> Rastrear Pedido</a></li>
+        <li><a href="https://refrigeracaokirchner.ind.br/"><span class="material-icons">store</span> Sobre a Empresa</a></li>
+        <li><a href="#"><span class="material-icons">contact_support</span> Fale Conosco</a></li>
+    </ul>
+</aside>
+
+    <div class="sidebar-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <aside class="sidebar" id="sidebarMenu">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <h3>Menu</h3>
+            <button onclick="toggleMenu()" style="background:none; border:none; font-size: 24px;">&times;</button>
+        </div>
+        <ul style="list-style: none;">
+            <li style="margin-bottom: 15px;"><a href="#" onclick="filtrarMarca('Todas'); toggleMenu()">Ver Todos Produtos</a></li>
+            <li style="margin-bottom: 15px;"><a href="#" onclick="navigateTo('register'); toggleMenu()">Criar Conta / Entrar</a></li>
+            <li style="margin-bottom: 15px;"><a href="#footer-contato" onclick="toggleMenu()">Fale Conosco</a></li>
+        </ul>
+    </aside>
+
+    <div class="categories">
+        <div class="container">
+            <ul class="cat-list">
+                <li><button class="cat-btn active" onclick="navigateTo('home')">Início</button></li>
+                <li><button class="cat-btn" onclick="filtrarCategoria('Compressores')">Compressores</button></li>
+                <li><button class="cat-btn" onclick="filtrarCategoria('Gases')">Gases</button></li>
+                <li><button class="cat-btn" onclick="filtrarCategoria('Ferramentas')">Ferramentas</button></li>
+                <li><button class="cat-btn" onclick="filtrarCategoria('Elétrica')">Elétrica</button></li>
+                <li><button class="cat-btn" onclick="filtrarCategoria('Instalação')">Instalação</button></li>
+                <li><button class="cat-btn" onclick="filtrarCategoria('Ventiladores')">Ventiladores</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="view-home" class="view-section active">
+        
+        <div class="hero-banner">
+            <img id="bannerImg" src="https://static.vecteezy.com/ti/vetor-gratis/t2/3810922-horizontal-banner-for-black-sexta-feira-venda-bolas-pretas-com-fitas-brilhantes-letras-douradas-vetor.jpg" alt="Banner">
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <span><span class="material-icons" style="vertical-align: middle; color: green;">local_shipping</span> Frete Grátis</span>
+                <small style="font-size: 12px; font-weight: normal; cursor: pointer;">Ver todos</small>
+            </div>
+            
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev" onclick="scrollCarousel('gridFreteGratis', -1)">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <div class="horizontal-scroll" id="gridFreteGratis"></div>
+                <button class="nav-btn next" onclick="scrollCarousel('gridFreteGratis', 1)">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+
+            <div class="section-title">
+                <span><span class="material-icons" style="vertical-align: middle; color: orange;">local_offer</span> Ofertas em Destaque</span>
+            </div>
+
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev" onclick="scrollCarousel('gridDestaques', -1)">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <div class="horizontal-scroll" id="gridDestaques"></div>
+                <button class="nav-btn next" onclick="scrollCarousel('gridDestaques', 1)">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+
+            <div class="section-title">
+                <span><span class="material-icons" style="vertical-align: middle; color: red;">trending_up</span> Mais Procurados</span>
+            </div>
+
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev" onclick="scrollCarousel('gridMaisProcurados', -1)">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <div class="horizontal-scroll" id="gridMaisProcurados"></div>
+                <button class="nav-btn next" onclick="scrollCarousel('gridMaisProcurados', 1)">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+
+            <div class="section-title">Nossas Marcas</div>
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev" onclick="scrollCarousel('gridMarcas', -1)">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <div class="horizontal-scroll" id="gridMarcas"></div>
+                <button class="nav-btn next" onclick="scrollCarousel('gridMarcas', 1)">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-list" class="view-section">
+        <div class="container" style="margin-top: 20px;">
+            <h2 id="listTitle" style="margin-bottom: 20px;">Resultados</h2>
+            <div class="products-grid" id="gridListagem" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;"></div>
+        </div>
+    </div>
+
+    <div id="view-product" class="view-section">
+        <div class="container">
+            <button onclick="navigateTo('home')" style="margin-top: 20px; background:none; border:none; cursor:pointer; display:flex; align-items:center;">
+                <span class="material-icons">arrow_back</span> Voltar
+            </button>
+            <div class="product-detail-container" id="productDetailContent">
+                </div>
+        </div>
+    </div>
+
+    <div id="view-favorites" class="view-section">
+        <div class="container" style="margin-top: 20px;">
+            <h2>Meus Favoritos</h2>
+            <div id="gridFavoritos" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 20px;">
+                <p>Você ainda não favoritou nenhum item.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-register" class="view-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 style="text-align: center; color: var(--azul-escuro); margin-bottom: 20px;">Criar Conta / Entrar</h2>
+                <form onsubmit="alert('Cadastro simulado com sucesso!'); return false;">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Acessar</button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 13px;">
+                        Ao se cadastrar, você concorda com nossos Termos de Uso.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cartModal">
+        <div class="cart-sidebar">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                <h2>Orçamento</h2>
+                <button onclick="toggleCart()" style="border:none; background:none; font-size:20px; cursor:pointer;">&times;</button>
+            </div>
+            <div style="flex:1; overflow-y:auto;" id="cartItemsContainer"></div>
+            <div style="border-top:1px solid #eee; padding-top:20px;">
+                <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:18px; margin-bottom:15px;">
+                    <span>Total:</span>
+                    <span id="cartTotal">R$ 0,00</span>
+                </div>
+                <button onclick="finalizarZap()" style="width:100%; padding:15px; background:var(--zap-cor); color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">
+                    Pedir no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5547996270011"_blank" class="whatsapp-float" id="whatsappBtn">
+        <div class="whatsapp-text">Em caso de dúvidas, entre em contato</div>
+        <div class="whatsapp-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" height="30" alt="WhatsApp">
+        </div>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('home')">Quem Somos</a></li>
+                        <li><a href="#">Segurança</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <a href="https://www.instagram.com/refrigeracaokirchner/?hl=pt">Instagram</a>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ajuda e Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Acompanhe seu Pedido</a></li>
+                        <li><a href="#">Prazos de Entrega</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" id="footer-contato">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><span class="material-icons" style="font-size:14px; vertical-align:middle;">phone</span> (47) 3434-4146 / (47) 9 9627-0011</li>
+                        <li><span class="material-icons" style="font-size:14px; vertical-align:middle;">email</span> adm@refrigeracaokirchner.ind.br</li>
+                        <li><span class="material-icons" style="font-size:14px; vertical-align:middle;">location_on</span> Rua Magdalena Tagliaferro, 125, Joinville - SC</li>
+                        <li>Seg a Sex: 08h às 18h</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Pagamento</h4>
+                    <p id="pagamentos" style="width: 100%;">Aceitamos PIX e boleto.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Refrigeração Kirchner. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
