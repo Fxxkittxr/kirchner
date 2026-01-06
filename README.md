@@ -1,8 +1,8 @@
-#Refrigeração Kirchner - Catálogo Digital
+# Refrigeração Kirchner - Catálogo Digital
 
 Este projeto é uma loja virtual (catálogo digital) desenvolvida para a Refrigeração Kirchner, permitindo que clientes visualizem produtos de refrigeração industrial, gerenciem favoritos e enviem solicitações de orçamento diretamente via WhatsApp.
 
-##🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
 O projeto foi construído utilizando tecnologias web fundamentais para garantir leveza e compatibilidade:
 
@@ -14,7 +14,7 @@ JavaScript (Vanilla): Lógica de navegação SPA, gerenciamento de estado (carri
 
 Material Icons: Conjunto de ícones modernos para interface.
 
-##✨ Funcionalidades Principais
+## ✨ Funcionalidades Principais
 
 Navegação SPA (Single Page Application): O site alterna entre as seções (Home, Listagem, Detalhes do Produto, Favoritos e Cadastro) sem recarregar o navegador.
 
@@ -30,7 +30,7 @@ Integração com WhatsApp: Ao finalizar o pedido, o sistema gera uma mensagem fo
 
 Design Responsivo: Totalmente adaptado para dispositivos móveis e desktops.
 
-##📂 Estrutura de Arquivos
+## 📂 Estrutura de Arquivos
 
 index.html: Arquivo principal contendo a estrutura de todas as seções e modais.
 
@@ -38,7 +38,7 @@ style.css: Estilização completa, definição de cores da marca e regras de lay
 
 script.js: Toda a inteligência do site, incluindo os dados dos produtos, funções de renderização e manipulação do carrinho.
 
-##🔧 Como Rodar o Projeto
+## 🔧 Como Rodar o Projeto
 
 Como o projeto utiliza tecnologias puras, não é necessário instalar dependências.
 
